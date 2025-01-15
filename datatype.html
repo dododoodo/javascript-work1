@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- datatype.html -->
+    
+    <div id="msg"></div>
+    
+    <script>
+        let html = Number( prompt('html 점수는?') );
+        let css = Number( prompt('css 점수는?') );
+        let result = (html + css) / 2 >= 60;
+
+        // msg.innerHTML = '화면에 나오게 하는 문구 입력';
+        // 화면에 문자가 나오게 설정
+
+        // if 제어문 : 상황이 2~n개로 쪼개질 때 명령 실행문
+        // if(boolean만 들어갈 수 있다. (true or false) ) -> 비교연산자로 true/false가 나오는 상황을 무조건 만들어야 함.
+        // true 자리에 result 변수를 넣음으로써 참거짓을 판단한다.
+        if(result) {
+            msg.innerHTML = '당신은 화면을 제작할 수 있습니다.';
+        } else {
+            msg.innerHTML = '조금만 더 공부하시면 될 것 같아요.';
+        }
+    </script>
+
+
+    <script>
+        // 특수기호 ($,_) 인식
+        let num = 3;
+        // ㄴ type => number
+            num += 1
+            num -= 1
+            num *= 2
+            num = num * 2
+            num
+        // 중복 변수 name 불가함
+
+        let num2 = "javascript";
+        // ㄴ type => string
+
+        let num_str = num + num2;
+        // ㄴ type => string
+
+        let num_str2 = num + num + num2;
+        // ㄴ type => string
+
+        let num3 = num / num;
+        // /는 나눈 몫을 뜻함. num3 = 1
+
+        let num4 = num % num;
+        // %는 나눈 다음 나머지의 값을 뜻함. num4 = 0
+
+        
+    </script>
+</body>
+</html>
