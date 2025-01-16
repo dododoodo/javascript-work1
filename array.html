@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+
+    
+    <script>
+        /*
+        let num = [10,20];
+        num[2]=30;
+        num.push(40);
+
+        let total = 0;
+
+        for(let i=0; i<4; i++){
+            // console.log(num[i]);
+            // num[i] += 10;
+
+            // total변수에 num의 값을 각각 더해서 주세요.
+            total=total+num[i];
+        }
+        console.log(total);
+
+        console.log(num.length);
+
+        let str='';
+        for(let i=0; i<num.length; i++){
+            if(num[i]==num[2]){
+                str = num[i];
+            }
+        }
+
+        console.log(str);
+
+
+
+        let fruit = ["오렌지","키위","청포도","망고"];
+        let input = prompt("당신이 좋아하는 과일은?");
+        let msg='';
+
+        for(let i=0; i<4; i++){
+            if(input == fruit[i]){
+                msg = "잠시만 기다려주시면 " + input + "를 가져다 드리겠습니다."
+                break;
+            } else {
+                msg = input + "가 없습니다. 다른 과일을 주문해주세요."
+            }
+        }
+
+        console.log(msg);
+        console.log(
+            fruit.includes(input)
+            // boolean include 문법 -> 42번째줄 ' if(input == fruit[i]){' 와 교체 가능
+        );
+        */
+
+
+    </script>
+
+    <img src="./img/grape.png" alt="" id="img">
+
+    <script>
+        let fruits_img = ['청포도','키위','오렌지','망고'];
+        let fruit_name = prompt('과일 이름?');
+
+        for(let i=0; i<4; i++){
+            if(fruits_img.includes(fruit_name)){
+                img.src = './img/' + fruit_name + '.png';
+                // img.src = `./img/'${fruit_name}'.png`;
+                // ` 백틱 기호 + ${자바스크립트로 인식} => 보기가 더 좋음
+            }
+        }
+
+        // img.src = './img/kiwi.png';
+
+    </script>
+
+
+</body>
+</html>
