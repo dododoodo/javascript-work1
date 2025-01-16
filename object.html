@@ -6,13 +6,60 @@
     <title>Document</title>
 </head>
 <body>
-
+    <img src="./img/키위.png" alt="" id="img">
     <script>
         let obj = {
             '키위':'키위.png',
-            '청포도':'청포도.png'
+            '청포도':'청포도.png',
+            '오렌지':'오렌지.png',
+            '망고':'망고.png'
         }
+        
+        let obj2 = {
+            과일:['키위','청포토','오렌지','망고'],
+            도서:['HTML','CSS','Javascript'],
+            수강생:['채현','지현','수빈','연희','태경','도연','용욱','지호','형주']
+        }
+
+        obj.출결 = '정상';
+
+        console.log(obj2)
+        console.log(Object.keys(obj2))
+        console.log(Object.values(obj2))
+        
+        let obj2Keys = Object.keys(obj2);
+
+        for(let i=0; i<4; i++) {
+            console.log(
+            obj2Keys[i] + '=>' +obj2[ obj2Keys[i]  ]
+            )
+        }
+
+        
+
+
+
+        let obj3 = {
+            수강생:[
+                {이름:'채현', 선호과일:'딸기', 보유도서:'HTML'},
+                {이름:'지현', 선호과일:'키위', 보유도서:'CSS'},
+                {이름:'수빈', 선호과일:'수박', 보유도서:'Javascript'},
+                {이름:'연희', 선호과일:'청포도', 보유도서:'JAVA'},
+                {이름:'태경', 선호과일:'오렌지', 보유도서:'CSS'},
+                {이름:'도연', 선호과일:'망고', 보유도서:'HTML'},
+                {이름:'용욱', 선호과일:'수박', 보유도서:'Javascript'},
+                {이름:'지호', 선호과일:'포도', 보유도서:'JAVA'},
+                {이름:'형주', 선호과일:'리치', 보유도서:'HTML'}
+            ]
+
+        }
+
+        /*
         console.log(obj.키위);
+
+        let name = prompt('과일이름?');
+        img.src = `./img/${obj[name]}`
+        */
     </script>
 
 </body>
