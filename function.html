@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 선언방식, 표현방식
+        // 명명함수, 익명함수
+
+        /*
+        1. 익명함수
+        정의 => function(){}
+        실행 => ();
+        시점 => 브라우저가 스크립트를 실행하는 순간
+
+        2. 명명함수
+        정의 => function 이름(){}
+        실행 => 이름();
+        시점 => 사용자가 기기에 이벤트를 발생시킬 때 또는 개발자가 시간을 설정할 때
+
+        * 재사용성을 높여주고 코드의 반복을 줄여주므로 용량을 줄여 브라우저를 최적화 시킬 수 있다.
+        */
+
+        /*
+        // 명명함수
+        function test(){
+            console.log('hi~');
+        }
+        test();
+
+        // 익명함수 
+        (function(){
+            console.log('즉시 실행~');
+        })();
+
+        // 변수정의->함수호출
+        let test2 = function(){
+            console.log('함수표현식');
+        }
+        test2();
+        */
+
+
+
+
+
+    </script>
+
+    <!-- <div class="count">
+    <button> - </button>
+    <span> 0 </span>
+    <button> + </button>
+</div> -->
+
+
+    <script>
+        /*
+        // +버튼을 누르면 10이하의 숫자가 나오게 하고,
+        // - 버튼을 누르면 숫자가 감소되지만 0이하로는 내려가지 않게
+        const elCount_btn = document.querySelectorAll('.count button');
+    
+        const elCount_num = document.querySelector('.count span');
+    
+        let countNum = 0;
+        
+        elCount_btn[0].onclick=function(){
+            if(countNum>0){
+                elCount_num.innerHTML = --countNum;
+            }
+        }
+        elCount_btn[1].onclick=function(){
+            if(countNum<10){
+                elCount_num.innerHTML = ++countNum;
+            }
+        }
+    
+        // 함수로 만들어보기
+        let countFn = function(변수1){
+            if(변수1 == '플러스'){
+                // 플러스 값일 때
+            }else{
+                // 마이너스 값일 때
+            }
+        }
+        countFn('플러스');
+        countFn('마이너스');
+    
+        */
+
+    </script>
+
+    <div class="calc-1">
+        <p>0</p>
+        <button>커피</button>
+        <button>우유</button>
+        <button>카라멜</button>
+        <button>초코</button>
+    </div>
+
+    <script>
+
+
+        // 함수에서 쓸 재료들
+        const elCalc = document.querySelector('.calc-1 p');
+
+        const elCalc_btn = document.querySelectorAll('.calc-1 button');
+
+        // 원하는 값을 적을 변수 생성
+        let total = 0;
+
+        // 물건의 가격 변수를 설정
+        let data = {
+            커피: 400,
+            우유: 200,
+            카라멜: 100,
+            초코: 300
+        }
+
+        // 버튼을 클릭할 때의 함수 식을 설정
+        // elCalc_btn을 클릭 시-> elCal의 html을 total로 바꿔라.
+
+        // elCalc_btn[0].onclick = function(){
+        //     total = data.커피 // 400
+        //     elCalc_btn[0].style="color:chocolate;"
+
+        //     elCalc.innerHTML = total;
+        // }
+
+        // **중요!! data 값을 key값으로 설정해서 빼내올 수 있음...!! >> Object.keys<<
+        let dataKey = Object.keys(data);
+        // 그래서 data.커피 = data[dataKey[0]] 같음!!! 대체 가능
+
+        /*
+
+        // 반복문
+        for(let i=0; i<4; i++)
+        {elCalc_btn[i].onclick = function () {
+            let textColor = elCalc_btn[i].style.backgroundColor;
+
+            if (textColor != 'chocolate') {
+                total += data[dataKey[i]]; // 400
+                elCalc_btn[i].style = "background-color:chocolate;"
+            } else {
+                total -= data[dataKey[i]]; // 400
+                elCalc_btn[i].style = "color:"
+            }
+            elCalc.innerHTML = total;
+        }}
+
+        */
+
+        // 또다른 반복문 등장!!! forEach(function(){})
+        // 대신 [ break 가 없다 ] 계속 반복함
+
+        elCalc_btn.forEach(function (button, i) {
+            button.onclick = function () {
+                button.classList.toggle('active');
+                // 변수 설정 blen => button.classList.contains('active');
+                let blen = button.classList.contains('active');
+                // button.classList.contains('active'); 대신 변수 blen 삽입해서 코드를 깔끔하게.
+                if (blen) {
+                    button.style = "background-color:chocolate;"
+                    total += data[dataKey[i]];
+                } else {
+                    button.style = "background-color:"
+                    total -= data[dataKey[i]];
+                }
+                elCalc.innerHTML = total;
+            }
+        })
+
+    </script>
+
+    <div>
+        <h2>1~100 숫자를 출력해주세요.</h2>
+        <div class="num100"></div>
+    </div>
+
+    <script>
+        // 1~100 까지의 숫자를 출력해라
+        const hunNum = document.querySelector('.num100');
+
+        for (let i=1; i <= 100; i++) {
+            hunNum.innerHTML += `<span>${i}</span>`;
+        }
+
+
+    </script>
+</body>
+
+</html>

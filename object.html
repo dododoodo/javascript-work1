@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button {
+            width: 350px;
+        }
+    </style>
 </head>
 <body>
+    <button>키위</button>
+    <button>청포도</button>
+    <button>망고</button>
+    <button>오렌지</button>
     <img src="./img/키위.png" alt="" id="img">
+
+
     <script>
+        /*
         let obj = {
             '키위':'키위.png',
             '청포도':'청포도.png',
@@ -36,7 +48,7 @@
         }
 
         
-
+       
 
 
         let obj3 = {
@@ -53,13 +65,84 @@
             ]
 
         }
-
+    */
         /*
         console.log(obj.키위);
 
         let name = prompt('과일이름?');
         img.src = `./img/${obj[name]}`
         */
+    
+    </script>
+
+
+
+    <script>
+        // 변수 선언방식 => var, const, let
+        // 호이스팅 => var,함수선언방식
+
+        /*
+        var test = 10;
+
+        let test2 = 10;
+        */
+
+        const test3 = null;
+        // 셀렉터
+
+        const elTest0 = document.querySelector('div');
+        const elTest1 = document.querySelector('#test');
+        const elTest2 = document.querySelector('.test');
+        const elTest3 = document.querySelector("img[data-num='100']");
+        const elTest4 = document.querySelectorAll('li');
+
+        const elTest5 = document.getElementById('test');
+        const elTest6 = document.getElementsByClassName('test');
+        const elTest7 = document.getElementsByName('aaa');
+        const elTest8 = document.getElementsByTagName('div');
+
+
+        const el_Img = document.querySelector('img');
+        const el_btn = document.querySelectorAll('button');
+
+
+        let fruits=["키위","청포도","망고","오렌지"];
+
+        // for 반복문 :
+        // 1. 변수선언(필요한 숫자의 첫값(제일 작은 수))
+        // 2. 조건(몇번을 반복할 것인가?)
+        // 3. 변수값을 증가(조건의 비교값이 틀리도록 설정)
+        
+        for(let i=0; i<el_btn.length; i++){
+            el_btn[i].onclick = function() {
+            el_Img.src=`./img/${fruits[i]}.png`;
+            }
+        }
+
+        
+
+        /*
+        el_btn[1].onclick = function() {
+            el_Img.src=`./img/${fruits[1]}.png`;
+        }
+        el_btn[2].onclick = function() {
+            el_Img.src=`./img/${fruits[2]}.png`;
+        }
+        el_btn[3].onclick = function() {
+            el_Img.src=`./img/${fruits[3]}.png`;
+        }
+        */
+
+
+        
+        //console.log(el_Img.getAttribute('src'));
+        // 셀렉터.getAttribute()
+
+
+
+
+
+
     </script>
 
 </body>
