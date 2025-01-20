@@ -105,8 +105,8 @@
     </div>
 
     <script>
-
-
+        
+        /*
         // 함수에서 쓸 재료들
         const elCalc = document.querySelector('.calc-1 p');
 
@@ -123,6 +123,8 @@
             초코: 300
         }
 
+        */
+        
         // 버튼을 클릭할 때의 함수 식을 설정
         // elCalc_btn을 클릭 시-> elCal의 html을 total로 바꿔라.
 
@@ -134,7 +136,7 @@
         // }
 
         // **중요!! data 값을 key값으로 설정해서 빼내올 수 있음...!! >> Object.keys<<
-        let dataKey = Object.keys(data);
+        // let dataKey = Object.keys(data);
         // 그래서 data.커피 = data[dataKey[0]] 같음!!! 대체 가능
 
         /*
@@ -156,6 +158,7 @@
 
         */
 
+        /*
         // 또다른 반복문 등장!!! forEach(function(){})
         // 대신 [ break 가 없다 ] 계속 반복함
 
@@ -175,7 +178,7 @@
                 elCalc.innerHTML = total;
             }
         })
-
+        */
     </script>
 
     <div>
@@ -184,15 +187,399 @@
     </div>
 
     <script>
+        /*
         // 1~100 까지의 숫자를 출력해라
         const hunNum = document.querySelector('.num100');
 
         for (let i=1; i <= 100; i++) {
             hunNum.innerHTML += `<span>${i}</span>`;
         }
+        */
+    
+
+    </script>
+
+    <div class="bg">랜덤 배경색</div>
+
+    <script>
+        const c1 = function(){
+            // return 함수 - 함수에 값을 넣으면 함수는 계산된 값을 돌려준다.
+            return Math.random()*256
+        }
+
+        const elBg = document.querySelector('.bg');
+        elBg.style = `background-color:rgb(${c1()},${c1()},${c1()})`
+        /*
+        // 정수만 표현 - 소숫값이 있으며 버려버림
+        Math.floor(c1),
+        // 반올림 - 소숫값에 따라 반올림을 해버림
+        Math.round(c1),
+        // 한자리 올림 - 소숫값이 있을 때 수를 1씩 올려버림
+        Math.ceil(c1)
+        */
+    </script>
+    
+    <!--
+    <div class="img-random">
+        <img src="" alt="">
+    </div>
+    -->
+
+    <script>
+        const elImg_random = document.querySelector('.img-random > img')
+
+        const imgUrl = ['키위','청포도','오렌지','망고'];
+
+        // 0,1,2,3까지 나와야 하니까 * 4
+        const imgNum = function(i){
+            return Math.floor(Math.random() * i)
+        }
+        
+
+        // get-가져오는 애 set-값을 변경하는 애
+
+        // elImg_random.getAttribute('src');
+        // ㄴ 같은 의미 -> elImg_random.src;
+        // elImg_random.setAttribute('src', '변경값');
+        // ㄴ 같은 의미 -> elImg_random.src='';
+        
+        elImg_random.src=`./img/${imgUrl[imgNum(4)]}.png`;
+    </script>
+
+    <div class="game">
+        1
+    </div>
+    <button class="gameStart">게임시작</button>
+
+    <script>
+        const elGame = document.querySelector('.game');
+        const elStart = document.querySelector('.gameStart');
+
+        // onclick을 실행하기 위한 문법 -> function(){} 꼭 필요!
+        const gamePlay = function(){
+            // ceil을 사용해 최대 5.nn 소숫점이 나오면 6이 될 수 있게 만듦
+            const gameNum = Math.ceil(Math.random() * 5)
+            elGame.innerHTML = gameNum;
+
+            if(gameNum >= 3){
+                console.log('승');
+            }else{
+                console.log('패');
+            }
+        }
+
+        elStart.onclick = gamePlay;
 
 
     </script>
+
+
+
+
+
+    <hr>
+
+    <div class="game2">
+        <h2>홀짝게임</h2>
+        <div class="control">
+            <b>< 규칙 > <br>
+                1. '홀'이 나와야 승리합니다. <br>
+                2. 나올 수 있는 최대 숫자는 '6'입니다.
+            </b>
+            <p>홀</p>
+            <button class="holStart">게임시작</button>
+        </div>
+        <div class="result"></div>
+        <div class="msg"> 승리하셨습니다! </div>
+    </div>
+    
+
+    <style>
+        .game2 {
+            width: 500px; margin: 100px auto;
+            padding: 40px; border: 1px solid black;
+            text-align: center;
+        }
+
+        .game2 .control {
+            background-color: lightslategray;
+            padding: 10px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .game2 .control p {
+            color: white; font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .game2 .control button {
+            border: none;
+            width: 100%; padding: 10px;
+            background-color: white;
+            color: black;
+        }
+        .game2 .control button:hover {
+            background-color: rgb(165, 28, 64);
+            color: white;
+        }
+        .game2 .control button:active {
+            background-color: rgb(233, 59, 105);
+        }
+
+        .game2 .msg {
+            font-weight: bold; font-size: 2rem;
+            padding: 15px; color: rgb(165, 28, 64);
+        }
+
+        .game2 .result {
+            font-size: 0.7rem;
+            padding: 10px;
+        }
+
+        .game2 .control b {
+            color: lightyellow;
+            font-size: 12px;
+            
+        }
+
+        
+    </style>
+
+    <script>
+        const holGame = document.querySelector('.control > p');
+        const holStart = document.querySelector('.holStart');
+        const msg = document.querySelector('.msg');
+        const result = document.querySelector('.result')
+
+        const holPlay = function(){
+            const holNum = Math.floor(Math.random() * 7)
+            
+            // holNum을 2로 나눈 수의 나머지가 1일 때 = 홀
+            if(holNum % 2 == 1){
+                holGame.innerHTML = '홀';
+                msg.innerHTML = '승리하셨습니다!';
+            }else{
+                holGame.innerHTML = '짝';
+                msg.innerHTML = '패배하셨습니다!';
+            }
+            
+            result.innerHTML = `※ 나온 숫자 : ${holNum}`
+        }
+        holStart.onclick = holPlay;
+        
+
+    </script>
+
+
+    <div class="game3">
+        <h2>더하기 게임</h2>
+        <p>합산 후 정답을 입력해주세요. (단 기회는 2번)</p>
+        <div>
+            <span class="num1">3</span> +
+            <span class="num2">3</span> =
+            <input type="text" class="result" />
+            <button>확인</button>
+        </div>
+        <p class="replay">게임을 다시하려면 여기를 눌러주세요.</p>
+    </div>
+
+    <script>
+        const elNum1 = document.querySelector('.num1');
+        const elNum2 = document.querySelector('.num2');
+        const elResult = document.querySelector('.result');
+        const elGame3_btn = document.querySelector('.game3 button');
+        const elGame3_replay = document.querySelector('.game3 .replay');
+
+        const ran1 = Math.ceil(Math.random()*100);
+        const ran2 = Math.ceil(Math.random()*100);
+
+        elNum1.innerHTML = ran1;
+        elNum2.innerHTML = ran2;
+
+        let plusCount = 0;
+        elResult.value = '';
+
+        elGame3_btn.onclick = function(){
+            plusCount++
+            // return : 뒷쪽에 있는 식 진행불가하게 함.
+            if(plusCount > 2){
+                alert('기회가 끝났습니다!');
+                return;
+            }
+            
+            const total = ran1 + ran2;
+            if(Number(elResult.value) === total){
+                alert('정답');
+            }else{
+                alert('오답입니다.');
+            }
+        }
+
+        const game3Play = function(){
+            const ran1 = Math.ceil(Math.random()*100);
+            const ran2 = Math.ceil(Math.random()*100);
+
+            elNum1.innerHTML = ran1;
+            elNum2.innerHTML = ran2;
+
+            let plusCount = 0;
+            elResult.value = '';
+
+            elGame3_btn.onclick = function(){
+                plusCount++
+                if(plusCount > 2) {
+                    alert('기회가 끝났습니다!');
+                    return;
+                }
+                
+                const total = ran1+ran2;
+
+                if(Number(elResult.value) === total){
+                    alert('정답');
+                }else{
+                    alert('오답입니다.');
+                }
+            };
+            elResult.value = '';
+        };
+        game3Play();
+
+        elGame3_replay.onclick=game3Play;
+    
+        // 랜덤 수를 이용하여 더하기 게임
+        // 1. 랜덤 수 2개를 발생한다.
+        // 2. span에 랜덤 수를 넣어준다.
+        // 3. 버튼을 클릭하면 랜덤 수 2개를 합산한다.
+        // 4. 입력된 값과 합산한 값이 일치하는지 확인한다.
+        // 5. 메세지 출력 (정답/오답)
+    </script>
+
+
+
+<div class="game4">
+    <h2>숫자 맞추기 게임</h2>
+    <div class="box1">
+        <b>< 규칙 > <br>
+            1. 1부터 100까지의 숫자를 맞추세요! <br>
+            2. 시도할 수 있는 횟수는 총 5회입니다.
+        </b>
+        <div>
+            <input type="text" class="result2" />
+            <button>입력</button>
+        </div>
+    </div>
+    <div class="boxResult"></div>
+    <div class="boxMsg"></div>
+    <p class="replay2">게임을 다시하려면 여기를 눌러주세요.</p>
+</div>
+
+<style>
+        .game4 {
+            width: 500px; margin: 100px auto;
+            padding: 40px; border: 1px solid black;
+            text-align: center;
+        }
+
+        .game4 .box1 {
+            background-color: lightslategray;
+            padding: 10px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .game4 .box1 .result2 {
+            margin: 25px auto;
+            text-align: center;
+        }
+        .game4 .box1 p {
+            color: white; font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .game24 .box1 button {
+            border: none;
+            width: 100%; padding: 10px;
+            background-color: white;
+            color: black;
+        }
+        .game4 .box1 button:hover {
+            background-color: rgb(165, 28, 64);
+            color: white;
+        }
+        .game4 .box1 button:active {
+            background-color: rgb(233, 59, 105);
+        }
+
+        .game4 .boxMsg {
+            font-weight: bold; font-size: 2rem;
+            padding: 15px; color: rgb(165, 28, 64);
+        }
+
+        .game4 .boxResult {
+            font-size: 0.7rem;
+            padding: 10px;
+        }
+
+        .game4 .box1 b {
+            color: lightyellow;
+            font-size: 12px;
+            
+        }
+
+        .game4 p {
+            cursor: pointer;
+        }
+        .game4 p:hover {
+            color: coral;
+        }
+</style>
+
+<script>
+    const boxResult = document.querySelector('.result2');
+    const box_Btn = document.querySelector('.game4 button');
+    const boxMsg = document.querySelector('.game4 .boxMsg');
+    const boxReplay = document.querySelector('.game4 .replay2');
+
+    const random_Num = Math.ceil(Math.random()*100);
+    const boxTotal = random_Num
+
+    box_Btn.onclick = function(){
+
+
+        if(boxResult.value == boxTotal){
+            boxMsg.innerHTML = '정답입니다!';
+        }else if(boxResult.value > boxTotal){
+            boxMsg.innerHTML = '숫자가 너무 큽니다!';
+        }else {
+            boxMsg.innerHTML = '숫자가 너무 작습니다!';
+        }
+    }
+    
+    const game4Play = function(){
+        
+        boxMsg.innerHTML = '';
+
+        const random_Num = Math.ceil(Math.random()*100);
+        const boxTotal = random_Num
+
+        box_Btn.onclick = function(){
+
+            if(boxResult.value == boxTotal){
+                boxMsg.innerHTML = '정답입니다!';
+            }else if(boxResult.value > boxTotal){
+                boxMsg.innerHTML = '숫자가 너무 큽니다!';
+            }else {
+                boxMsg.innerHTML = '숫자가 너무 작습니다!';
+            }
+        }
+    }
+    game4Play();
+
+    boxReplay.onclick=game4Play;
+</script>
+
+
+
+
 </body>
 
-</html>
+</html

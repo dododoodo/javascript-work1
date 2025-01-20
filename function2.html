@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="game5">
+        <h2>가위바위보</h2>
+        <div>
+            <p class="computer"><img src="./img/가위.png" alt=""></p>
+            <div class="user">
+                <p><img src="./img/가위.png" alt=""></p>
+                <p><img src="./img/바위.png" alt=""></p>
+                <p><img src="./img/보.png" alt=""></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .game5 {
+            width: 400px; margin: 100px auto;
+        }
+        
+        .game5 > div > p > img { width: 100%;}
+        .game5 > div > p {
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+            border-radius: 60px;
+        }
+        .game5 > div > div {display: flex;}
+        .game5 > div > div > p {
+            width: 150px; height: 100px;
+            border-radius: 100%;
+            border: 3px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+        }
+        .game5 > div > div > p >img {width: 70%;}
+        .game5 > div > div > p:hover, p.active {
+            background-color: lightyellow;
+            cursor: pointer;
+        }
+    
+    </style>
+
+    <script>
+        const elGame5_computer = document.querySelector('.computer img')
+        const elGame5_user = document.querySelectorAll('.user p')
+        
+        let data5 = ['가위','바위','보'];
+        let count5 = 0;
+        // setInterval함수 : 애니메이션처럼 반복해서 실행되는 함수의 지연을 설정
+        let play = setInterval(function(){
+            count5++;
+            elGame5_computer.src = `./img/${data5[count5%3]}.png`;
+        },200);
+
+
+        elGame5_user.forEach(function(p, i){
+            elGame5_user[i].onclick = function(){
+                // setInterval을 멈추는 함수
+                clearInterval(play)
+                let result =
+                (i == 0 && count5 == 1) ||
+                (i == 1 && count5 == 2) || 
+                (i == 2 && count5 == 1);
+                console.log(result);
+                
+            }
+        });
+        
+
+        
+    
+    </script>
+</body>
+</html>
