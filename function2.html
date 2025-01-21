@@ -59,7 +59,8 @@
         // setInterval함수 : 애니메이션처럼 반복해서 실행되는 함수의 지연을 설정
         let play = setInterval(function(){
             count5++;
-            elGame5_computer.src = `./img/${data5[count5%3]}.png`;
+            if(count5 == 3)count5 =0;
+            elGame5_computer.src = `./img/${data5[count5]}.png`;
         },200);
 
 
@@ -67,12 +68,15 @@
             elGame5_user[i].onclick = function(){
                 // setInterval을 멈추는 함수
                 clearInterval(play)
-                let result =
-                (i == 0 && count5 == 1) ||
-                (i == 1 && count5 == 2) || 
-                (i == 2 && count5 == 1);
-                console.log(result);
+                let result = (i == 0 && count5 == 1) || (i == 1 && count5 == 2) || (i == 2 && count5 == 0);
                 
+                if(result){
+                    console.log('이겼다.');
+                }else if(i == count5){
+                    console.log('비겼다.');
+                }else{
+                    console.log('졌다.');
+                }
             }
         });
         
