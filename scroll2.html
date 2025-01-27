@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img{
+            display: block; margin: 200px 0; width: 500px;
+            transition: 1s; transform: translateY(50%); opacity: 0;
+        }
+        img.active{transform: translateY(0); opacity: 1;}
+        .txt{
+            position: fixed; left: 0; top: 0;
+            font-size: 8rem;
+            font-weight: bold;
+            -webkit-text-stroke: 3px black;
+            -webkit-text-fill-color: transparent;
+        }
+        aside {
+            position: fixed;
+            right: 10%; bottom: 10%;
+        }
+    </style>
+    
+    <div class="txt">Animation TEXT</div>
+
+    <div class="content">
+        <img src="./img/ho.jpg" alt="">
+        <img src="./img/ra.jpg" alt="">
+        <img src="./img/fox.jpg" alt="">
+        <img src="./img/co.jpg" alt="">
+    </div>
+
+    <aside><button>top</button></aside>
+
+    <script>
+        let init = function () {
+            const elText = document.querySelector('.txt');
+            const elContent = document.querySelectorAll('.content img');
+    
+            // IntersectionObserver 콜백 함수 정의
+            function callback(entries, observer){
+                // 감시대상자들에게 명령 전달
+                entries.forEach(function(entry) {
+                    // 요소가 화면에 보이면 (isIntersecting이 true인 경우)
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('active');
+                        // 감시 해제
+                        observer.unobserve(entry.target);
+                    }
+                });
+                
+            }
+            let ob = new IntersectionObserver(callback);
+            // 이미지를 IntersectionObserver로 감시 설정
+            // observe()를 사용하여 감시
+            ob.observe(elContent[0])
+            ob.observe(elContent[1])
+            ob.observe(elContent[2])
+            ob.observe(elContent[3])
+            
+            // 스크롤 이벤트
+            window.onscroll = function () {
+                elText.style = `transform:translateX(${window.scrollY}px)`;
+            }
+
+            // 탑버튼 만들기
+            const elTop = document.querySelector('aside');
+            elTop.onclick = function () {
+                window.scrollTo({top:0,behavior:'smooth'});
+            }
+
+        }
+    
+        /*
+        window.onload = init;
+
+
+        window.scrollTo()
+        window.scrollBy()
+        window.scrollY
+
+        이동하고 싶은 콘텐츠.scrollIntoView();
+
+        let a = new IntersectionObserver();
+        a.observe(태그)
+
+        window.onscroll = function(){}
+        */
+
+    </script>
+</body>
+</html>

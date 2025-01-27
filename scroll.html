@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: 3000px;">
+    <header>
+        <a href="#">menu 01</a>
+        <a href="#">menu 02</a>
+        <a href="#">menu 03</a>
+        <style>
+            header {
+                position: fixed; left: 0; top: 0;
+                text-align: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: black;
+                transition: all 1s ease;
+                transform: translateY(-100%);
+            }
+
+            header.active {
+                transform: translateY(0%);
+            }
+            header a {
+                color: white;
+                text-decoration: none;
+            }
+        </style>
+    </header>
+
+
+    <section> content 01 </section>
+    <section> content 02 </section>
+    <section> content 03 </section>
+
+    <style>
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+        }
+
+        section:nth-of-type(even) {
+            /* even(짝수) | odd(홀수) */
+            background-color: #eee;
+        }
+    </style>
+    <script>
+        // setInterval();
+        // setTimeout(function(){
+        //     // 최상단에서부터 1000만큼 이동
+        //     window.scrollTo(0,1000)
+        // },1000);
+        
+        
+        // setInterval(function(){
+        //     // 현 스크롤 위치에서 500만큼 이동
+        //     window.scrollBy(0,500)
+        // },1000);
+
+        let pos = {y:0, dy:0, state:''};
+        let scrollState = function(){
+            pos.y = window.scrollY;
+            // 삼항연산자
+            pos.state = (pos.y > pos.dy) ? true : false;
+            pos.dy = pos.y;
+        }
+
+        let headerActive = function () {
+            const elHeader = document.querySelector('header');
+
+            if(pos.state){
+                // down
+                elHeader.classList.remove('active');
+            }else{
+                // up
+                elHeader.classList.add('active');
+            }
+        }
+
+        window.onscroll = function () {
+            scrollState();
+            headerActive();
+            
+        }
+        
+        // section 제어
+        // block:'center' -> 중앙으로 오게하기
+
+        const elMenu = document.querySelectorAll('header a');
+        const elSection = document.querySelectorAll('section');
+
+        elMenu[0].onclick = function (e) {
+            e.preventDefault();
+            elSection[0].scrollIntoView({
+                behavior:'smooth'
+            });
+        }
+        elMenu[1].onclick = function (e) {
+            e.preventDefault(e);
+            elSection[1].scrollIntoView({
+                behavior:'smooth'
+            });
+        }
+        elMenu[2].onclick = function (e) {
+            e.preventDefault(e);
+            elSection[2].scrollIntoView({
+                behavior:'smooth'
+            });
+        }
+    
+    </script>
+</body>
+</html>
