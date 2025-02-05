@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./index.html" data-name="HOME">HOME</a>
+            <a href="./about.html" data-name="ABOUT">ABOUT</a>
+            <a href="./service.html" data-name="SERVICE">SERVICE</a>
+        </nav>
+    </header>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+
+
+    <script>
+        const elNav = document.querySelectorAll('a');
+
+        // function(){}
+        // ()=>{}
+
+        let pageName = localStorage.getItem('pageName');
+
+        elNav.forEach((a) => {
+
+            if (a.textContent == pageName) {
+                a.classList.add('active');
+            }
+            a.onclick = () => {
+                let name = a.innerHTML;
+                localStorage.setItem('pageName', name)
+            }
+        })
+    </script>
+
+
+    <main>
+        <article class="login">
+            <h2>로그인</h2>
+            <form action="#">
+                <p><input type="text" placeholder="아이디"></p>
+                <p><input type="password" placeholder="비밀번호"></p>
+                <p><input type="checkbox">로그인 상태 유지</p>
+
+                <p><input type="submit"></p>
+            </form>
+        </article>
+        <article class="logout">
+            <button>로그아웃</button>
+        </article>
+    </main>
+
+    <script>
+        const elUser = document.querySelectorAll('input[type=text], input[type=password]')
+        const elId = document.querySelector('input[type=checkbox]')
+        const elSubmit = document.querySelector('input[type=submit]')
+
+        const elLogin = document.querySelector('.login')
+        const elLogout = document.querySelector('.logout')
+
+        // 저장소 값을 input에 노출
+        function init() {
+            let id = localStorage.getItem('id');
+            let pw = localStorage.getItem('pw');
+
+            elUser[0].value = id;
+            elUser[1].value = pw;
+
+            if (id != null && pw != null) {
+                elLogin.style.display = 'none';
+                elLogout.style.display = 'block';
+            } else {
+                elLogin.style.display = 'block';
+                elLogout.style.display = 'none';
+            }
+        }
+
+        init();
+
+
+        elSubmit.onclick = (e) => {
+            e.preventDefault();
+
+            if (elId.checked) {
+                localStorage.setItem('id', elUser[0].value)
+                localStorage.setItem('pw', elUser[1].value)
+            }
+
+            init();
+        }
+
+        const logOut = document.querySelector('button');
+        logOut.onclick = ()=>{
+            localStorage.clear();
+            init();
+        }
+    </script>
+
+
+</body>
+
+</html>

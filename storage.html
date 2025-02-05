@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // getItem,setItem,removeItem,clear
+        // JSON.stringify(오브젝트를 문자로 변환),
+        // JSON.parse(문자를 오브젝트로 변환)
+
+        localStorage.setItem('pageNum',100);
+        localStorage.setItem('name','홍길동');
+        localStorage.setItem('email','aa@gmail.com');
+
+        let userTy = JSON.stringify({name:'홍길동'});
+        localStorage.setItem('user',userTy);
+        // localStorage.removeItem('email')
+        // localStorage.clear();
+        let userObj = JSON.parse(localStorage.getItem('user'));
+
+        console.log(
+            userObj
+        );
+        
+    </script>
+</body>
+</html>
